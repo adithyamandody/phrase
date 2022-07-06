@@ -1,0 +1,35 @@
+{
+  "canisters": {
+    "dkeeper1": {
+      "main": "src/dkeeper1/main.mo",
+      "type": "motoko"
+    },
+    "dkeeper1_assets": {
+      "dependencies": [
+        "dkeeper1"
+      ],
+      "frontend": {
+        "entrypoint": "src/dkeeper1_assets/src/index.html"
+      },
+      "source": [
+        "src/dkeeper1_assets/assets",
+        "dist/dkeeper1_assets/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "dfx": "0.9.3",
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    }
+  },
+  "version": 1
+}
