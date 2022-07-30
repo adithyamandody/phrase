@@ -4,14 +4,19 @@ import Footer from './Footer';
 import Note from './Note';
 import CreateArea from './CreateArea';
 import { dkeeper1 } from '../../../declarations/dkeeper1';
-
+import { Base64 } from 'js-base64';
+// const decryptedString = cryptr.decrypt(encryptedString);
+// console.log(encryptedString);
 function App() {
   const [notes, setNotes] = useState([]);
 
   function addNote(newNote) {
     setNotes((prevNotes) => {
-      dkeeper1.createNotes(newNote.title, newNote.content);
-      return [newNote, ...prevNotes];
+      const encryptedString1 = Base64.encode(newNote.title);
+      const encryptedString2 = Base64.encode(newNote.content);
+      dkeeper1.createNotes(encryptedString1, encryptedString2);
+      const obj = { title: encryptedString1, content: encryptedString2 };
+      return [obj, ...prevNotes];
     });
   }
   useEffect(() => {
